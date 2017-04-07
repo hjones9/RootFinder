@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package rootfinder;
+
 import java.util.Scanner;
 
 /**
@@ -16,26 +17,27 @@ public class RootFinder {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+
         Scanner scan = new Scanner(System.in);
         System.out.println("Please enter the number that will be square rooted.");
         double number = scan.nextInt();
-        
+
         boolean run = true;
-        
-        while(run){
-        for(int i  = 0; i <20; i++){
-        double result = 0.5 * (number - 2/number);
-        System.out.println(result);
-        
+
+        while (run) {double guess = 1;
+            for (int i = 0; i < 20; i++) {
+                
+                System.out.println(root(number, guess));
+                double result = root(number, guess);
+                guess=result;
+            }
+            run = false;
         }
-        
-        run = false;
-        
-        }
-        
-        
-        
     }
-    
+
+    public static double root(double number, double guess) {
+        double result = 0.5 * (guess -   number/guess);
+        return result;
+    }
+
 }
