@@ -22,22 +22,31 @@ public class RootFinder {
         System.out.println("Please enter the number that will be square rooted.");
         double number = scan.nextInt();
 
+        String x = "0";
+        String y = "1";
         boolean run = true;
+        DecimalFormat format = new DecimalFormat("#.0000000000");
+        double guess = 1;
+        while (run) {
 
-        while (run) {double guess = 1;
-            for (int i = 0; i < 20; i++) {
-                
-                System.out.println(root(number, guess));
-                double result = root(number, guess);
-                guess=result;
+            double result = root(number, guess);
+            System.out.println(format.format(result));
+            
+            guess = result;
+            y = x;
+            x = format.format(result);
+            if (x.equals(y)) {
+                run = false;
+            } else {
+                run = true;
             }
-            run = false;
         }
     }
 
     public static double root(double number, double guess) {
-        double result = 0.5 * (guess -   number/guess);
+        double result = guess - (0.5 * (guess - number / guess));
         return result;
     }
 
 }
+
