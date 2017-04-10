@@ -16,7 +16,7 @@ public class RootFinder {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+ public static void main(String[] args) {
 
         Scanner scan = new Scanner(System.in);
         System.out.println("Please enter the number that will be square rooted.");
@@ -27,11 +27,13 @@ public class RootFinder {
         boolean run = true;
         DecimalFormat format = new DecimalFormat("#.0000000000");
         double guess = 1;
+        double result;
+
         while (run) {
 
-            double result = root(number, guess);
+            result = root(number, guess);
             System.out.println(format.format(result));
-            
+
             guess = result;
             y = x;
             x = format.format(result);
@@ -41,6 +43,9 @@ public class RootFinder {
                 run = true;
             }
         }
+        
+        System.out.println("The square root of "+ number +" is " + x);
+        
     }
 
     public static double root(double number, double guess) {
@@ -49,4 +54,5 @@ public class RootFinder {
     }
 
 }
+
 
